@@ -21,7 +21,7 @@ $(function(){
 	// and add them to the clock
 
 	var digit_holder = clock.find('.digits');
-
+	
 	$.each(positions, function(){
 
 		if(this == ':'){
@@ -66,13 +66,26 @@ $(function(){
 		// d is for day of week and A is for AM/PM
 
 		var now = moment().format("hhmmssdA");
+		
+		
+		//These lines of code are what makes the background change color.
+		
+		var colornow = moment().format("hhmmss");
+		
+		// console.log(colornow;
+		
+		
+		//Selects the html tag and add the Hex color from colornow.
+		$('html').css('background-color', "#" + colornow);
 
+		
 		digits.h1.attr('class', digit_to_name[now[0]]);
 		digits.h2.attr('class', digit_to_name[now[1]]);
 		digits.m1.attr('class', digit_to_name[now[2]]);
 		digits.m2.attr('class', digit_to_name[now[3]]);
 		digits.s1.attr('class', digit_to_name[now[4]]);
 		digits.s2.attr('class', digit_to_name[now[5]]);
+
 
 		// The library returns Sunday as the first day of the week.
 		// Stupid, I know. Lets shift all the days one position down, 
@@ -98,6 +111,16 @@ $(function(){
 
 	})();
 
+	
+	/* console.log(digits.h1);
+	console.log(digits.m1); 
+	
+	$.each(digits, function(index, value) {
+		console.log(value);
+		
+		
+		$('html').css('background-color', "#" + value);
+	}); */
 	// Switch the theme
 
 	$('a.button').click(function(){
